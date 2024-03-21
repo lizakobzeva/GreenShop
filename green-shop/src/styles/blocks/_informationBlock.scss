@@ -1,0 +1,43 @@
+.informationBlock {
+  margin-top: 100px;
+  display: flex;
+  gap: 28px;
+  height: 250px;
+
+  &__img {
+    width: 292px;
+    height: 292px;
+    position: absolute;
+    left: 3px;
+    bottom: 10px;
+  }
+  &__text {
+    width: 65%;
+    z-index: 6;
+  }
+  &__item {
+    position: relative;
+    padding: 35px 30px;
+    text-align: right;
+    border-radius: var(--border-radius);
+    background-color: var(--color-light-alt);
+    display: flex;
+    justify-content: end;
+  }
+  &__title {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--color-black);
+    text-transform: uppercase;
+  }
+  &__description {
+    margin-top: 10px;
+    color: var(--color-black-alt);
+  }
+  &__button {
+    margin-top: 25px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,32 @@
+.PlantImages {
+  display: flex;
+  gap: 30px;
+
+  &__miniature {
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-light-alt);
+    margin-bottom: 10px;
+    border-radius: 6px;
+  }
+
+  &__block-main-image {
+    width: 444px;
+    height: 444px;
+    background-color: var(--color-light-alt);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__main-image {
+    width: 404px;
+    height: 404px;
+  }
+
+  &__main-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-dark);
+  }
+}

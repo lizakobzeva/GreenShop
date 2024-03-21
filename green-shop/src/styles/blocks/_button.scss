@@ -1,0 +1,22 @@
+.button {
+  @include flex-center(true);
+  padding: var(--button-padding);
+  font-weight: 700;
+  gap: 3px;
+  background-color: var(--color-accent);
+  color: var(--color-light);
+  border: none;
+  border-radius: var(--border-radius);
+  @include hover {
+    opacity: 0.7;
+    transition: var(--transition-duration);
+  }
+  &__accent {
+    padding: var(--button-padding);
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    background-color: #fff;
+    border: solid 1px var(--color-accent);
+    color: var(--color-accent);
+  }
+}

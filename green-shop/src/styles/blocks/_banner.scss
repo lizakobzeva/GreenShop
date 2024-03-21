@@ -1,0 +1,39 @@
+.banner {
+  background-color: var(--color-light-alt);
+  border-radius: var(--border-radius);
+  display: flex;
+  &__contant {
+    padding: 70px 40px;
+    gap: 10px;
+  }
+  &__title-top {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 10%;
+    text-transform: uppercase;
+  }
+  &__title-main {
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 70px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    &--accent {
+      color: var(--color-accent);
+    }
+  }
+
+  &__description {
+    color: rgb(114, 114, 114);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+  &__button {
+    padding: var(--button-padding);
+    margin-top: 45px;
+  }
+}
