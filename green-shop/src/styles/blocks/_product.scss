@@ -45,5 +45,12 @@
     @include hover {
       color: var(--color-accent);
     }
+    &:active {
+      background-color: var(--color-accent);
+      color: white;
+    }
+  }
+  &__like {
+    fill: palevioletred !important;
   }
 }

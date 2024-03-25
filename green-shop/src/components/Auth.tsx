@@ -1,9 +1,34 @@
 import googleIcon from "../assets/googleIcon.svg";
 import facebookIcon from "../assets/facebookIcon.svg";
 import { useAppDispatch } from "../Redux/hook";
-import { ChangeOnAuthWindow } from "../Redux/Slices/Auth";
+import { ChangeOnAuthWindow, ChangeUser } from "../Redux/Slices/Auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 function Auth() {
   const dispatch = useAppDispatch();
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+  const login = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
+        const user = result.user;
+        dispatch(ChangeUser(user));
+        dispatch(ChangeOnAuthWindow(false));
+      })
+      .catch(() => {
+        // // Handle Errors here.
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // // The email of the user's account used.
+        // const email = error.customData.email;
+        // // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+        console.log("error");
+      });
+  };
   return (
     <div className="Auth">
       <div className="Auth__block">
@@ -70,7 +95,7 @@ function Auth() {
             <hr className="Auth__Or-line" />
           </div>
 
-          <button className="Auth__button Auth__button--light">
+          <button className="Auth__button Auth__button--light" onClick={login}>
             <img src={googleIcon} alt="" />
             Login with Google
           </button>

@@ -1207,6 +1207,13 @@ input[type=text]::placeholder {
     color: var(--color-accent);
   }
 }
+.product__tool:active {
+  background-color: var(--color-accent);
+  color: white;
+}
+.product__like {
+  fill: palevioletred !important;
+}
 
 .Releted__header {
   width: 100%;
