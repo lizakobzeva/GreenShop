@@ -1,0 +1,26 @@
+.pagination {
+  margin-top: 90px;
+  width: 100%;
+  position: relative;
+  &__list {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    right: 0;
+  }
+  &__item {
+    width: 35px;
+    height: 35px;
+    border: solid 1px #e5e5e5;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    &--active {
+      background-color: var(--color-accent);
+      color: white;
+    }
+  }
+}

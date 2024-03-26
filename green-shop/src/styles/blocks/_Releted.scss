@@ -1,0 +1,39 @@
+.Releted {
+  &__header {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px var(--color-accent-alt);
+  }
+  &__header-title {
+    color: var(--color-dark);
+    position: relative;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+  &__list {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__product-image {
+    width: 219px;
+    height: 255px;
+  }
+  &__product-image {
+    width: 190px;
+    height: 243px;
+  }
+  &__dots {
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  &__dot {
+    color: var(--color-accent);
+  }
+}

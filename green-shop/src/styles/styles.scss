@@ -1,0 +1,12 @@
+@import "normalize", "fonts", "mixins", "media", "variables", "utils", "globals";
+// @import "blocks/cross-button", "blocks/grid", "blocks/mobile-overlay",
+//   "blocks/button", "blocks/burger-button", "blocks/header", "blocks/section",
+//   "blocks/hero", "blocks/service-card", "blocks/services", "blocks/banner",
+//   "blocks/puddle-bg", "blocks/studies";
+
+@import "blocks/Auth", "blocks/pagination", "blocks/informationBlock",
+  "blocks/button", "blocks/header", "blocks/section", "blocks/banner",
+  "blocks/shopBlockNav", "blocks/products", "blocks/shopBlock",
+  "blocks/shopBlockContent", "blocks/Blog", "blocks/footer",
+  "blocks/newsletters", "blocks/PlantSettings", "blocks/PlantImages",
+  "blocks/Description", "blocks/product", "blocks/Releted";

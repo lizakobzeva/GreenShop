@@ -1,0 +1,91 @@
+.header {
+  padding-top: 60px;
+  width: 100%;
+
+  @include desktop {
+    padding-top: 30px;
+  }
+  @include mobile {
+    padding-top: 15px;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 40px;
+    border-bottom: solid 1px var(--color-accent-alt);
+    padding-bottom: 15px;
+    @include tablet {
+      column-gap: 20px;
+    }
+  }
+  &__logo {
+    max-width: 150px;
+    @include tablet {
+      max-width: 120px;
+    }
+    @include mobile {
+      max-width: 144px;
+    }
+  }
+  &__menu {
+    font-size: 20px;
+
+    @include desktop {
+      font-size: 18px;
+    }
+    @include tablet {
+      font-size: 16px;
+    }
+
+    &-list {
+      display: flex;
+      align-items: center;
+      column-gap: 40px;
+
+      @include desktop {
+        column-gap: 20px;
+      }
+      @include tablet {
+        column-gap: 10px;
+      }
+    }
+    &-link {
+      position: relative;
+      height: 48px;
+      align-items: center;
+      display: inline-flex;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 125%;
+        left: 50%;
+        translate: -50%;
+        width: 0;
+        height: 3px;
+        background-color: var(--color-accent);
+        transition-duration: inherit;
+      }
+      &--active {
+        font-weight: 700;
+        color: var(--color-accent);
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__button {
+    height: 48px;
+    padding-inline: 18px;
+    font-size: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+}

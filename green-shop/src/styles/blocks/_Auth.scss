@@ -1,0 +1,93 @@
+.Auth {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #0a0d1240;
+  z-index: 100;
+  display: flex;
+
+  justify-content: center;
+  bottom: 0;
+  &__block {
+    position: fixed;
+    margin-top: 70px;
+    width: 500px;
+    //height: 600px;
+    background-color: white;
+    padding: 50px 100px 58px 100px;
+    border-bottom: solid 10px var(--color-accent);
+  }
+  &__close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: var(--color-accent);
+  }
+  &__title-block {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-dark);
+  }
+  &__title {
+    cursor: pointer;
+    &--active {
+      color: var(--color-accent);
+      cursor: pointer;
+    }
+  }
+  &__description {
+    font-size: 13px;
+    margin-top: 53px;
+  }
+  &__input {
+    margin-top: 15px;
+    width: 100%;
+    border: 1px solid rgb(234, 234, 234);
+    border-radius: 5px;
+    padding: 12px 14px;
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+  &__forgot {
+    width: 100%;
+    display: flex;
+    margin-top: 14px;
+    color: var(--color-accent);
+    justify-content: right;
+    font-size: 14px;
+  }
+  &__button {
+    margin-top: 27px;
+    width: 100%;
+    display: flex;
+    &--light {
+      justify-content: center;
+      padding: 10px;
+      border: 1px solid rgb(234, 234, 234);
+      border-radius: 5px;
+      background-color: #fff;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-dark-alt);
+      align-items: center;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+  }
+  &__OrBlock {
+    margin-bottom: 27px;
+    margin-top: 46px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+  }
+  &__Or-line {
+    color: var(--color-light-alt);
+    width: 30%;
+  }
+}

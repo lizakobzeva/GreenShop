@@ -1,0 +1,55 @@
+.Blog {
+  margin-top: 100px;
+
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--color-black);
+  }
+  &__description {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: rgb(114, 114, 114);
+  }
+
+  &__list {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    width: 268px;
+    background-color: var(--color-light-alt);
+  }
+
+  &__item-text {
+    padding: 8px 15px;
+  }
+
+  &__item-data {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+  &__item-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-black);
+  }
+  &__item-description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+  &__item-link {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+  }
+}
