@@ -3,28 +3,19 @@ import SuperSaleBanner from "../assets/SuperSaleBanner.png";
 import Product from "./Product";
 import { collection, getDocs } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
-import firebase from "firebase/compat/app";
+import app from "../firebase";
 
 type PlantsType = {
   title: string;
   price: string;
   image: number;
+  id: string;
 };
 
 function ShopBlock() {
   const [Plants, setPlants] = useState<Array<PlantsType>>([
-    { title: "", price: "", image: 0 },
+    { title: "", price: "", image: 0, id: "" },
   ]);
-
-  const app = firebase.initializeApp({
-    apiKey: "AIzaSyDpc0j_cAFpRSEfwa0d4FX8iFc67_JQbvw",
-    authDomain: "greenshop-34f53.firebaseapp.com",
-    projectId: "greenshop-34f53",
-    storageBucket: "greenshop-34f53.appspot.com",
-    messagingSenderId: "950908964771",
-    appId: "1:950908964771:web:cdde314cd2428235a01416",
-    measurementId: "G-3F0RR1P2KT",
-  });
 
   const db = getFirestore(app);
 
@@ -37,6 +28,7 @@ function ShopBlock() {
           title: doc.data().title,
           price: doc.data().price,
           image: doc.data().image,
+          id: doc.id,
         };
         PlantsArray.push(item);
       });
@@ -174,6 +166,7 @@ function ShopBlock() {
               {Plants.map((plant) => {
                 return (
                   <Product
+                    id={plant.id}
                     title={plant.title}
                     price={plant.price}
                     image={plant.image}

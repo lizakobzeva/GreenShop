@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import image1 from "../assets/image1.png";
 import image2 from "../assets/image2.png";
 import image3 from "../assets/image3.png";
@@ -10,11 +11,12 @@ interface ProductProps {
   title: string;
   price: string;
   image: number;
+  id: string;
 }
 
 const images = [image1, image2, image3, image4, image5, image6, image7];
 
-const Product = ({ title, price, image }: ProductProps) => {
+const Product = ({ title, price, image, id }: ProductProps) => {
   return (
     <li className="product">
       <div className="product__image">
@@ -58,7 +60,7 @@ const Product = ({ title, price, image }: ProductProps) => {
             </svg>
           </div>
 
-          <div className="product__tool">
+          <Link className="product__tool" to={`/shop/${id}`}>
             <svg
               width="20"
               height="20"
@@ -78,7 +80,7 @@ const Product = ({ title, price, image }: ProductProps) => {
                 </clipPath>
               </defs>
             </svg>
-          </div>
+          </Link>
         </div>
       </div>
 
