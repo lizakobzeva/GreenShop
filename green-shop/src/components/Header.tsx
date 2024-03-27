@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { useAppDispatch, useAppSelector } from "../Redux/hook";
 import { ChangeOnAuthWindow, RemoveUser } from "../Redux/Slices/Auth";
@@ -17,30 +18,27 @@ function Header() {
             loading="lazy"
           />
         </a>
-        <nav className="header__menu hidden-mobile">
+        <nav className="header__menu">
           <ul className="header__menu-list">
             <li className="header__menu-item">
-              <a
-                href=""
-                className="header__menu-link--active header__menu-link"
-              >
+              <NavLink to="/" className="header__menu-link">
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="header__menu-item">
-              <a href="" className="header__menu-link">
+              <NavLink to={"/shop/"} className="header__menu-link">
                 Shop
-              </a>
+              </NavLink>
             </li>
             <li className="header__menu-item">
-              <a href="" className="header__menu-link">
+              <NavLink to={"/plantcare/"} className="header__menu-link">
                 Plant Care
-              </a>
+              </NavLink>
             </li>
             <li className="header__menu-item">
-              <a href="" className="header__menu-link">
+              <NavLink to={"/blog/"} className="header__menu-link">
                 Blogs
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -100,7 +98,7 @@ function Header() {
                 </svg>
               </a>
 
-              <a href="">
+              <NavLink to={"/shop/shoppingcart"}>
                 <svg
                   width="24"
                   height="24"
@@ -113,7 +111,7 @@ function Header() {
                     fill="#3D3D3D"
                   />
                 </svg>
-              </a>
+              </NavLink>
 
               <button
                 onClick={() => dispatch(RemoveUser())}

@@ -36,7 +36,6 @@ function FullProduct() {
   });
 
   const db = getFirestore(app);
-  console.log(params.id);
 
   useEffect(() => {
     window.scrollTo(0, 0);

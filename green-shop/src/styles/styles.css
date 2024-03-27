@@ -560,11 +560,11 @@ input[type=text]::placeholder {
   background-color: var(--color-accent);
   transition-duration: inherit;
 }
-.header__menu-link--active {
+.header__menu-item .active {
   font-weight: 700;
   color: var(--color-accent);
 }
-.header__menu-link--active::after {
+.header__menu-item .active::after {
   width: 100%;
 }
 .header__button {

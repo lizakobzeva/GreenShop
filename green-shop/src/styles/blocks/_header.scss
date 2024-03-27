@@ -67,7 +67,16 @@
         background-color: var(--color-accent);
         transition-duration: inherit;
       }
-      &--active {
+      // &--active {
+      //   font-weight: 700;
+      //   color: var(--color-accent);
+      //   &::after {
+      //     width: 100%;
+      //   }
+      // }
+    }
+    &-item {
+      .active {
         font-weight: 700;
         color: var(--color-accent);
         &::after {
