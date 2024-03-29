@@ -1,5 +1,13 @@
 .shopBlockContent {
   width: 100%;
+  &__input {
+    height: 30px;
+    border: solid 2px var(--color-dark-alt);
+    border-radius: 5px;
+    &::placeholder {
+      margin-left: 10px;
+    }
+  }
   &__header {
     justify-content: space-between;
     display: flex;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SuperSaleBanner from "../assets/SuperSaleBanner.png";
+import SuperSaleBanner from "../assets/SuperSaleBanner.jpg";
 import Product from "./Product";
 import { collection, getDocs } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
@@ -43,65 +43,51 @@ function ShopBlock() {
       <div className="shopBlock">
         <div className="shopBlockNav">
           <div className="shopBlockNav__content">
-            <h4 className="shopBlockNav__title">Categories</h4>
+            <h4 className="shopBlockNav__title">Категории</h4>
             <ul className="shopBlockNav__list">
               <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">
-                  House Plants
-                </span>
+                <span className="shopBlockNav__categories-name">Рестораны</span>
+                <span className="shopBlockNav__categories-count">(33)</span>
+              </li>
+              <li className="shopBlockNav__item">
+                <span className="shopBlockNav__categories-name">Кафе</span>
                 <span className="shopBlockNav__categories-count">(33)</span>
               </li>
               <li className="shopBlockNav__item">
                 <span className="shopBlockNav__categories-name">
-                  House Plants
+                  Образование
                 </span>
                 <span className="shopBlockNav__categories-count">(33)</span>
               </li>
               <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">
-                  House Plants
-                </span>
+                <span className="shopBlockNav__categories-name">Отдых</span>
+                <span className="shopBlockNav__categories-count">(33)</span>
+              </li>
+              <li className="shopBlockNav__item">
+                <span className="shopBlockNav__categories-name">Здоровье</span>
+                <span className="shopBlockNav__categories-count">(33)</span>
+              </li>
+              <li className="shopBlockNav__item">
+                <span className="shopBlockNav__categories-name">Красота</span>
+                <span className="shopBlockNav__categories-count">(33)</span>
+              </li>
+              <li className="shopBlockNav__item">
+                <span className="shopBlockNav__categories-name">Спорт</span>
+                <span className="shopBlockNav__categories-count">(33)</span>
+              </li>
+              <li className="shopBlockNav__item">
+                <span className="shopBlockNav__categories-name">Магазин</span>
                 <span className="shopBlockNav__categories-count">(33)</span>
               </li>
               <li className="shopBlockNav__item">
                 <span className="shopBlockNav__categories-name">
-                  House Plants
-                </span>
-                <span className="shopBlockNav__categories-count">(33)</span>
-              </li>
-              <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">
-                  House Plants
-                </span>
-                <span className="shopBlockNav__categories-count">(33)</span>
-              </li>
-              <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">
-                  House Plants
-                </span>
-                <span className="shopBlockNav__categories-count">(33)</span>
-              </li>
-              <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">
-                  House Plants
-                </span>
-                <span className="shopBlockNav__categories-count">(33)</span>
-              </li>
-              <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">
-                  House Plants
-                </span>
-                <span className="shopBlockNav__categories-count">(33)</span>
-              </li>
-              <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">
-                  House Plants
+                  Путешествие
                 </span>
                 <span className="shopBlockNav__categories-count">(33)</span>
               </li>
             </ul>
 
-            <h4 className="shopBlockNav__title">Price Range</h4>
+            <h4 className="shopBlockNav__title">Средний чек</h4>
             <div className="shopBlockNav__price-list">
               <img className="shopBlockNav__item" src="" alt="" />
               <span className="shopBlockNav__item">
@@ -110,22 +96,6 @@ function ShopBlock() {
               </span>
               <button className="button shopBlockNav__item">Filter</button>
             </div>
-
-            <h4 className="shopBlockNav__title">Size</h4>
-            <ul className="shopBlockNav__list">
-              <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">Small</span>
-                <span className="shopBlockNav__categories-count">(33)</span>
-              </li>
-              <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">Medium</span>
-                <span className="shopBlockNav__categories-count">(33)</span>
-              </li>
-              <li className="shopBlockNav__item">
-                <span className="shopBlockNav__categories-name">Large</span>
-                <span className="shopBlockNav__categories-count">(33)</span>
-              </li>
-            </ul>
           </div>
           <img className="shopBlockNav__img" src={SuperSaleBanner} alt="" />
         </div>
@@ -134,31 +104,15 @@ function ShopBlock() {
           <div className="shopBlockContent__header">
             <div className="shopBlockContent__filter">
               <ul className="shopBlockContent__list">
-                <li className="shopBlockContent__item">All Plants</li>
-                <li className="shopBlockContent__item">New Arrivals</li>
-                <li className="shopBlockContent__item">Sale</li>
+                <li className="shopBlockContent__item">Подходящие партнеры:</li>
               </ul>
             </div>
             <div className="shopBlockContent__sorting">
-              <span>Short by:</span>
-              <span>
-                Default sorting
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12.6666 5.66667L7.99998 10.3333L3.33331 5.66667"
-                    stroke="#3D3D3D"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </span>
+              <input
+                className="shopBlockContent__input"
+                type="text"
+                placeholder="Найти партнера"
+              />
             </div>
           </div>
           <div className="products">
