@@ -34,7 +34,9 @@ const AuthRegister = () => {
           })
         );
       })
-      .catch(console.error);
+      .catch(() => {
+        alert("Не получилось зарегестрироваться, попробуйте еще раз");
+      });
     dispatch(ChangeOnAuthWindow(false));
   };
 

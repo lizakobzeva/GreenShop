@@ -30,7 +30,14 @@ function App() {
             </>
           }
         />
-        <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
+        <Route
+          path="/shop/shoppingcart"
+          element={
+            <>
+              <ShoppingCart /> <Releted />
+            </>
+          }
+        />
       </Routes>
       <Footer />
     </div>

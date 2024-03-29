@@ -29,7 +29,9 @@ const AuthLogin = () => {
               })
             );
         })
-        .catch(console.error);
+        .catch(() => {
+          alert("Не получилось войти, попробуйте еще раз");
+        });
       dispatch;
       dispatch(ChangeOnAuthWindow(false));
     }
