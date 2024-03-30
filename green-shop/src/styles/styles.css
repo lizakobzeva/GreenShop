@@ -499,9 +499,8 @@ input[type=text]::placeholder {
          column-gap: 20px;
   }
 }
-.header__logo img {
-  width: 87px;
-  height: 72px;
+.header__logo {
+  max-width: 150px;
 }
 @media (max-width: 1023px) {
   .header__logo {
@@ -624,15 +623,13 @@ input[type=text]::placeholder {
   text-transform: uppercase;
 }
 .banner__title-main {
-  margin-top: 50px;
-  font-size: 35px;
+  font-size: 70px;
   font-weight: 900;
+  line-height: 70px;
   letter-spacing: 0%;
   text-transform: uppercase;
 }
 .banner__title-main--accent {
-  font-weight: 900;
-  font-size: 60px;
   color: var(--color-accent);
 }
 .banner__description {
@@ -682,7 +679,6 @@ input[type=text]::placeholder {
   font-weight: 700;
 }
 .shopBlockNav__img {
-  margin-top: 20px;
   width: 100%;
 }
 
@@ -764,17 +760,6 @@ input[type=text]::placeholder {
 
 .shopBlockContent {
   width: 100%;
-}
-.shopBlockContent__input {
-  height: 30px;
-  border: solid 2px var(--color-dark-alt);
-  border-radius: 5px;
-}
-.shopBlockContent__input::-moz-placeholder {
-  margin-left: 10px;
-}
-.shopBlockContent__input::placeholder {
-  margin-left: 10px;
 }
 .shopBlockContent__header {
   justify-content: space-between;

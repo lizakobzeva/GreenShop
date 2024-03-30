@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import { useAppDispatch, useAppSelector } from "../Redux/hook";
 import { ChangeOnAuthWindow, RemoveUser } from "../Redux/Slices/Auth";
 function Header() {
@@ -22,17 +22,22 @@ function Header() {
           <ul className="header__menu-list">
             <li className="header__menu-item">
               <NavLink to="/" className="header__menu-link">
-                Главная
+                Home
               </NavLink>
             </li>
             <li className="header__menu-item">
               <NavLink to={"/shop/"} className="header__menu-link">
-                Партнеры
+                Shop
               </NavLink>
             </li>
             <li className="header__menu-item">
               <NavLink to={"/plantcare/"} className="header__menu-link">
-                Обратная связь
+                Plant Care
+              </NavLink>
+            </li>
+            <li className="header__menu-item">
+              <NavLink to={"/blog/"} className="header__menu-link">
+                Blogs
               </NavLink>
             </li>
           </ul>

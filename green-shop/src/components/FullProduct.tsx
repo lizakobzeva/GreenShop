@@ -85,7 +85,7 @@ function FullProduct() {
           <div className="PlantSettings__description">
             <h3 className="PlantSettings__main-title">{data.title}</h3>
             <div className="PlantSettings__description-header">
-              <p className="PlantSettings__price">Средний чек: {data.price}</p>
+              <p className="PlantSettings__price">{data.price}</p>
               <div className="PlantSettings__assesment">
                 <svg
                   className="PlantSettings__star"
@@ -216,11 +216,53 @@ function FullProduct() {
                     fill-rule="nonzero"
                   />
                 </svg>
+                <p className="PlantSettings__review">19 Customer Review</p>
               </div>
             </div>
             <div className="PlantSettings_item">
-              <h4 className="PlantSettings__title">Краткое описание:</h4>
+              <h4 className="PlantSettings__title">Short Description:</h4>
               <p className="PlantSettings__text">{data.Shortdescription}</p>
+            </div>
+
+            <div className="PlantSettings__item">
+              <h4 className="PlantSettings__title">Size</h4>
+              <ul className="PlantSettings__sizes">
+                <li className="PlantSettings__size">S</li>
+                <li className="PlantSettings__size">M</li>
+                <li className="PlantSettings__size">L</li>
+                <li className="PlantSettings__size">XL</li>
+              </ul>
+              <div className="PlantSettings__buttons">
+                <div className="PlantSettings__count-minus">-</div>
+                <p className="PlantSettings__count">1</p>
+                <div className="PlantSettings__count-plus">+</div>
+                <button className="button PlantSettings__button">
+                  BUY NOW
+                </button>
+                <button className="button__accent PlantSettings__button">
+                  ADD TO CART
+                </button>
+                <div className="PlantSettings__button PlantSettings__heart">
+                  <svg
+                    width="20.000000"
+                    height="17.000000"
+                    viewBox="0 0 20 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                  >
+                    <desc>Created with Pixso.</desc>
+                    <defs />
+                    <path
+                      id="Vector"
+                      d="M10 16.88C9.71 16.88 9.44 16.78 9.22 16.59C8.41 15.89 7.63 15.22 6.95 14.64L6.94 14.63C4.93 12.92 3.19 11.43 1.98 9.97C0.63 8.34 0 6.79 0 5.1C0 3.46 0.56 1.94 1.58 0.83C2.62 -0.29 4.04 -0.91 5.58 -0.91C6.74 -0.91 7.79 -0.55 8.72 0.17C9.19 0.54 9.62 0.98 10 1.5C10.37 0.98 10.8 0.54 11.27 0.17C12.2 -0.55 13.25 -0.91 14.41 -0.91C15.95 -0.91 17.37 -0.29 18.41 0.83C19.43 1.94 20 3.46 20 5.1C20 6.79 19.36 8.34 18.01 9.97C16.8 11.43 15.06 12.92 13.05 14.63C12.36 15.22 11.58 15.88 10.77 16.59C10.55 16.78 10.28 16.88 10 16.88ZM5.58 0.26C4.37 0.26 3.25 0.74 2.44 1.62C1.62 2.52 1.17 3.75 1.17 5.1C1.17 6.52 1.7 7.79 2.88 9.22C4.03 10.61 5.73 12.06 7.7 13.74L7.71 13.74C8.4 14.33 9.18 15 9.99 15.71C10.81 15 11.6 14.33 12.29 13.74C14.26 12.06 15.96 10.61 17.11 9.22C18.29 7.79 18.82 6.52 18.82 5.1C18.82 3.75 18.37 2.52 17.55 1.62C16.74 0.74 15.62 0.26 14.41 0.26C13.52 0.26 12.7 0.54 11.98 1.1C11.34 1.6 10.89 2.23 10.63 2.66C10.5 2.89 10.26 3.03 10 3.03C9.73 3.03 9.49 2.89 9.36 2.66C9.1 2.23 8.65 1.6 8.01 1.1C7.29 0.54 6.47 0.26 5.58 0.26Z"
+                      fill="#46A358"
+                      fill-opacity="1.000000"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                </div>
+              </div>
             </div>
 
             <div className="PlantSettings__item">
