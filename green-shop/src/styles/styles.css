@@ -148,7 +148,10 @@ svg * {
 @font-face {
   font-family: "CeraProRegular";
   src: url("../fonts/CeraProRegular/CeraProRegular.eot");
-  src: url("../fonts/CeraProRegular/CeraProRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/CeraProRegular/CeraProRegular.woff") format("woff"), url("../fonts/CeraProRegular/CeraProRegular.ttf") format("truetype");
+  src: url("../fonts/CeraProRegular/CeraProRegular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/CeraProRegular/CeraProRegular.woff") format("woff"),
+    url("../fonts/CeraProRegular/CeraProRegular.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
 }
@@ -196,7 +199,7 @@ svg * {
   padding: 0 !important;
   white-space: nowrap !important;
   -webkit-clip-path: inset(100%) !important;
-          clip-path: inset(100%) !important;
+  clip-path: inset(100%) !important;
   clip: rect(0 0 0 0) !important;
   overflow: hidden !important;
 }
@@ -262,12 +265,12 @@ h4 {
   font-size: clamp(18px, 1.3888888889vw, 20px);
 }
 
-input[type=text]::-moz-placeholder {
+input[type="text"]::-moz-placeholder {
   font-size: 14px;
   color: rgb(172, 172, 172);
 }
 
-input[type=text]::placeholder {
+input[type="text"]::placeholder {
   font-size: 14px;
   color: rgb(172, 172, 172);
 }
@@ -489,14 +492,14 @@ input[type=text]::placeholder {
   justify-content: space-between;
   align-items: center;
   -moz-column-gap: 40px;
-       column-gap: 40px;
+  column-gap: 40px;
   border-bottom: solid 1px var(--color-accent-alt);
   padding-bottom: 15px;
 }
 @media (max-width: 1023px) {
   .header__inner {
     -moz-column-gap: 20px;
-         column-gap: 20px;
+    column-gap: 20px;
   }
 }
 .header__logo {
@@ -529,18 +532,18 @@ input[type=text]::placeholder {
   display: flex;
   align-items: center;
   -moz-column-gap: 40px;
-       column-gap: 40px;
+  column-gap: 40px;
 }
 @media (max-width: 1280px) {
   .header__menu-list {
     -moz-column-gap: 20px;
-         column-gap: 20px;
+    column-gap: 20px;
   }
 }
 @media (max-width: 1023px) {
   .header__menu-list {
     -moz-column-gap: 10px;
-         column-gap: 10px;
+    column-gap: 10px;
   }
 }
 .header__menu-link {
@@ -585,7 +588,7 @@ input[type=text]::placeholder {
   display: flex;
   align-items: center;
   -moz-column-gap: 40px;
-       column-gap: 40px;
+  column-gap: 40px;
 }
 .section__header:not(:last-child) {
   margin-bottom: 80px;
@@ -1022,7 +1025,8 @@ input[type=text]::placeholder {
   font-weight: 500;
   margin: 0 12px;
 }
-.PlantSettings__count-minus, .PlantSettings__count-plus {
+.PlantSettings__count-minus,
+.PlantSettings__count-plus {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1416,4 +1420,4 @@ input[type=text]::placeholder {
   color: var(--color-accent);
   display: flex;
   justify-content: center;
-}/*# sourceMappingURL=styles.css.map */
+} /*# sourceMappingURL=styles.css.map */
