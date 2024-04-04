@@ -10,10 +10,13 @@ import image4 from "../assets/image4.png";
 import image5 from "../assets/image5.png";
 import image6 from "../assets/image6.png";
 import image7 from "../assets/image7.png";
+import { useAppDispatch, useAppSelector } from "../Redux/hook";
+import { AddLike, RemoveLike } from "../Redux/Slices/Plants";
 
 const images = [image1, image2, image3, image4, image5, image6, image7];
 
 type FullPlantsType = {
+  id: string;
   title: string;
   price: string;
   image: number;
@@ -26,6 +29,7 @@ type FullPlantsType = {
 function FullProduct() {
   const params = useParams();
   const [data, setData] = useState<FullPlantsType>({
+    id: "",
     title: "",
     price: "",
     image: 1,
@@ -36,6 +40,19 @@ function FullProduct() {
   });
 
   const db = getFirestore(app);
+  const { like } = useAppSelector((state) => state.plants);
+  const [likeState, SetLikeState] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+
+  const ChangeLike = (like: boolean) => {
+    if (like) {
+      dispatch(AddLike(data.id));
+      SetLikeState(true);
+    } else {
+      dispatch(RemoveLike(data.id));
+      SetLikeState(false);
+    }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,7 +71,11 @@ function FullProduct() {
       setData(DataPlant);
     }
     FetchPlant();
-  }, [db, params.id]);
+    if (like.includes(data.id) && !likeState) {
+      SetLikeState(true);
+    }
+  }, [data.id, db, like, likeState, params.id]);
+
   return (
     <div className="shop">
       <section className="section container">
@@ -242,25 +263,47 @@ function FullProduct() {
                 <button className="button__accent PlantSettings__button">
                   ADD TO CART
                 </button>
-                <div className="PlantSettings__button PlantSettings__heart">
-                  <svg
-                    width="20.000000"
-                    height="17.000000"
-                    viewBox="0 0 20 17"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                  >
-                    <desc>Created with Pixso.</desc>
-                    <defs />
-                    <path
-                      id="Vector"
-                      d="M10 16.88C9.71 16.88 9.44 16.78 9.22 16.59C8.41 15.89 7.63 15.22 6.95 14.64L6.94 14.63C4.93 12.92 3.19 11.43 1.98 9.97C0.63 8.34 0 6.79 0 5.1C0 3.46 0.56 1.94 1.58 0.83C2.62 -0.29 4.04 -0.91 5.58 -0.91C6.74 -0.91 7.79 -0.55 8.72 0.17C9.19 0.54 9.62 0.98 10 1.5C10.37 0.98 10.8 0.54 11.27 0.17C12.2 -0.55 13.25 -0.91 14.41 -0.91C15.95 -0.91 17.37 -0.29 18.41 0.83C19.43 1.94 20 3.46 20 5.1C20 6.79 19.36 8.34 18.01 9.97C16.8 11.43 15.06 12.92 13.05 14.63C12.36 15.22 11.58 15.88 10.77 16.59C10.55 16.78 10.28 16.88 10 16.88ZM5.58 0.26C4.37 0.26 3.25 0.74 2.44 1.62C1.62 2.52 1.17 3.75 1.17 5.1C1.17 6.52 1.7 7.79 2.88 9.22C4.03 10.61 5.73 12.06 7.7 13.74L7.71 13.74C8.4 14.33 9.18 15 9.99 15.71C10.81 15 11.6 14.33 12.29 13.74C14.26 12.06 15.96 10.61 17.11 9.22C18.29 7.79 18.82 6.52 18.82 5.1C18.82 3.75 18.37 2.52 17.55 1.62C16.74 0.74 15.62 0.26 14.41 0.26C13.52 0.26 12.7 0.54 11.98 1.1C11.34 1.6 10.89 2.23 10.63 2.66C10.5 2.89 10.26 3.03 10 3.03C9.73 3.03 9.49 2.89 9.36 2.66C9.1 2.23 8.65 1.6 8.01 1.1C7.29 0.54 6.47 0.26 5.58 0.26Z"
-                      fill="#46A358"
-                      fill-opacity="1.000000"
-                      fill-rule="nonzero"
-                    />
-                  </svg>
+                <div
+                  className="PlantSettings__button PlantSettings__heart"
+                  onClick={() => {
+                    ChangeLike(!likeState);
+                  }}
+                >
+                  {likeState ? (
+                    <svg
+                      color="red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      id="IconChangeColor"
+                      height="27"
+                      width="27"
+                    >
+                      <path
+                        d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"
+                        id="mainIconPathAttribute"
+                        fill="#ff006a"
+                      ></path>
+                    </svg>
+                  ) : (
+                    <svg
+                      width="20.000000"
+                      height="17.000000"
+                      viewBox="0 0 20 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlnsXlink="http://www.w3.org/1999/xlink"
+                    >
+                      <desc>Created with Pixso.</desc>
+                      <defs />
+                      <path
+                        id="Vector"
+                        d="M10 16.88C9.71 16.88 9.44 16.78 9.22 16.59C8.41 15.89 7.63 15.22 6.95 14.64L6.94 14.63C4.93 12.92 3.19 11.43 1.98 9.97C0.63 8.34 0 6.79 0 5.1C0 3.46 0.56 1.94 1.58 0.83C2.62 -0.29 4.04 -0.91 5.58 -0.91C6.74 -0.91 7.79 -0.55 8.72 0.17C9.19 0.54 9.62 0.98 10 1.5C10.37 0.98 10.8 0.54 11.27 0.17C12.2 -0.55 13.25 -0.91 14.41 -0.91C15.95 -0.91 17.37 -0.29 18.41 0.83C19.43 1.94 20 3.46 20 5.1C20 6.79 19.36 8.34 18.01 9.97C16.8 11.43 15.06 12.92 13.05 14.63C12.36 15.22 11.58 15.88 10.77 16.59C10.55 16.78 10.28 16.88 10 16.88ZM5.58 0.26C4.37 0.26 3.25 0.74 2.44 1.62C1.62 2.52 1.17 3.75 1.17 5.1C1.17 6.52 1.7 7.79 2.88 9.22C4.03 10.61 5.73 12.06 7.7 13.74L7.71 13.74C8.4 14.33 9.18 15 9.99 15.71C10.81 15 11.6 14.33 12.29 13.74C14.26 12.06 15.96 10.61 17.11 9.22C18.29 7.79 18.82 6.52 18.82 5.1C18.82 3.75 18.37 2.52 17.55 1.62C16.74 0.74 15.62 0.26 14.41 0.26C13.52 0.26 12.7 0.54 11.98 1.1C11.34 1.6 10.89 2.23 10.63 2.66C10.5 2.89 10.26 3.03 10 3.03C9.73 3.03 9.49 2.89 9.36 2.66C9.1 2.23 8.65 1.6 8.01 1.1C7.29 0.54 6.47 0.26 5.58 0.26Z"
+                        fill="#46A358"
+                        fill-opacity="1.000000"
+                        fill-rule="nonzero"
+                      />
+                    </svg>
+                  )}
                 </div>
               </div>
             </div>

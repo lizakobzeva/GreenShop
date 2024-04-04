@@ -1205,23 +1205,6 @@ input[type="text"]::placeholder {
   background-color: white;
   border-radius: 4px;
 }
-@media (hover: hover) {
-  .product__tool:hover {
-    color: var(--color-accent);
-  }
-}
-@media (hover: none) {
-  .product__tool:active {
-    color: var(--color-accent);
-  }
-}
-.product__tool:active {
-  background-color: var(--color-accent);
-  color: white;
-}
-.product__like {
-  fill: palevioletred !important;
-}
 
 .Releted__header {
   width: 100%;

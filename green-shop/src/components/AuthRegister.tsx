@@ -4,6 +4,8 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useAppDispatch } from "../Redux/hook";
 import { ChangeOnAuthWindow, SetUser } from "../Redux/Slices/Auth";
+import { setDoc, getFirestore, doc } from "firebase/firestore";
+import app from "../firebase";
 
 const AuthRegister = () => {
   const dispatch = useAppDispatch();
@@ -12,6 +14,14 @@ const AuthRegister = () => {
     useState<React.ChangeEvent<HTMLInputElement>>();
   const [repassword, setRePassword] =
     useState<React.ChangeEvent<HTMLInputElement>>();
+  const db = getFirestore(app);
+
+  const UserCartBase = async (userId = "") => {
+    await setDoc(doc(db, "Users", userId), {
+      cart: [{ id: "obj1", count: 3, size: "s" }, "obj2", "obj3"],
+      like: ["obj1", "obj2", "obj3"],
+    });
+  };
 
   const handleRegister = (
     email: React.ChangeEvent<HTMLInputElement>,
@@ -25,7 +35,7 @@ const AuthRegister = () => {
       password.target.value
     )
       .then(({ user }) => {
-        console.log(user);
+        if (user.uid) UserCartBase(user.uid);
         dispatch(
           SetUser({
             email: user.email,

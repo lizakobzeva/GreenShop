@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 let Isauth: boolean = false;
-if (window.localStorage.getItem("token")) {
+if (window.localStorage.getItem("id")) {
   Isauth = true;
 }
 
@@ -10,7 +10,6 @@ export const AuthSlice = createSlice({
   initialState: {
     Isauth: Isauth,
     email: "",
-    token: "",
     id: "",
     OnAuthWindow: false,
   },
@@ -20,14 +19,13 @@ export const AuthSlice = createSlice({
     },
     SetUser: (state, action) => {
       state.email = action.payload.email;
-      state.token = action.payload.token;
       state.id = action.payload.id;
-      window.localStorage.setItem("token", action.payload.token);
+      window.localStorage.setItem("id", action.payload.id);
       state.Isauth = true;
     },
     RemoveUser: (state) => {
-      (state.email = ""), (state.token = ""), (state.id = "");
-      window.localStorage.removeItem("token");
+      (state.email = ""), (state.id = "");
+      window.localStorage.removeItem("id");
       state.Isauth = false;
     },
   },
