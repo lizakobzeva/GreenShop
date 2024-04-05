@@ -60,6 +60,7 @@ function FullProduct() {
       const docRef = doc(db, "Plants", `${params.id}`);
       const docSnap = (await getDoc(docRef)).data();
       const DataPlant = {
+        id: docSnap?.id,
         title: docSnap?.title,
         price: docSnap?.price,
         image: docSnap?.image,
@@ -106,7 +107,7 @@ function FullProduct() {
           <div className="PlantSettings__description">
             <h3 className="PlantSettings__main-title">{data.title}</h3>
             <div className="PlantSettings__description-header">
-              <p className="PlantSettings__price">{data.price}</p>
+              <p className="PlantSettings__price">${data.price}.00</p>
               <div className="PlantSettings__assesment">
                 <svg
                   className="PlantSettings__star"
@@ -246,13 +247,6 @@ function FullProduct() {
             </div>
 
             <div className="PlantSettings__item">
-              <h4 className="PlantSettings__title">Size</h4>
-              <ul className="PlantSettings__sizes">
-                <li className="PlantSettings__size">S</li>
-                <li className="PlantSettings__size">M</li>
-                <li className="PlantSettings__size">L</li>
-                <li className="PlantSettings__size">XL</li>
-              </ul>
               <div className="PlantSettings__buttons">
                 <div className="PlantSettings__count-minus">-</div>
                 <p className="PlantSettings__count">1</p>

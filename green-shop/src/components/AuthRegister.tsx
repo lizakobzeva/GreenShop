@@ -18,8 +18,8 @@ const AuthRegister = () => {
 
   const UserCartBase = async (userId = "") => {
     await setDoc(doc(db, "Users", userId), {
-      cart: [{ id: "obj1", count: 3, size: "s" }, "obj2", "obj3"],
-      like: ["obj1", "obj2", "obj3"],
+      cart: [],
+      like: [],
     });
   };
 

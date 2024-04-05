@@ -12,7 +12,7 @@ import { AddLike, RemoveLike } from "../Redux/Slices/Plants";
 
 interface ProductProps {
   title: string;
-  price: string;
+  price: number;
   image: number;
   id: string;
 }
@@ -132,7 +132,7 @@ const Product = ({ title, price, image, id }: ProductProps) => {
 
       <div className="product__description">
         <span className="product__title">{title}</span>
-        <span className="product__price">{price}</span>
+        <span className="product__price">${price}.00</span>
       </div>
     </li>
   );

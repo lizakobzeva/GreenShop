@@ -7,14 +7,14 @@ import app from "../firebase";
 
 type PlantsType = {
   title: string;
-  price: string;
+  price: number;
   image: number;
   id: string;
 };
 
 function ShopBlock() {
   const [Plants, setPlants] = useState<Array<PlantsType>>([
-    { title: "", price: "", image: 0, id: "" },
+    { title: "", price: 0, image: 0, id: "" },
   ]);
 
   const db = getFirestore(app);
