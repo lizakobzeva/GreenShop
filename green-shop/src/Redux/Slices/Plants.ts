@@ -5,7 +5,7 @@ import app from "../../firebase";
 const db = getFirestore(app);
 
 //let cart: Map<string, number> = {};
-let cart: Map<string, number> = new Map([["", 0]]);
+let cart: Array<object> = [{}];
 let like: Array<string> = [""];
 
 const userId = window.localStorage.getItem("id");
@@ -44,8 +44,40 @@ export const PlantsSlice = createSlice({
           like: state.like,
         });
     },
+    AddCart: (state, action) => {
+      let i = state.cart.length;
+      let exist = false;
+      while (i != 0) {
+        const obj = state.cart[i];
+        if (obj)
+          if (Object.keys(obj)[0] == action.payload) {
+            const key = action.payload;
+            const objec: object = {};
+            objec[key] = Object.values(obj)[0] + 1;
+            state.cart[i] = objec;
+            exist = true;
+            break;
+          }
+        i--;
+      }
+
+      if (!exist && typeof action.payload === "string") {
+        const cart = state.cart;
+        const key = action.payload;
+        const objec: object = {};
+        objec[key] = 1;
+        cart.push(objec);
+        state.cart = cart;
+      }
+      if (userId)
+        setDoc(doc(db, "Users", userId), {
+          cart: state.cart,
+          like: state.like,
+        });
+    },
   },
 });
 
-export const { ChangePlantsData, RemoveLike, AddLike } = PlantsSlice.actions;
+export const { ChangePlantsData, RemoveLike, AddLike, AddCart } =
+  PlantsSlice.actions;
 export default PlantsSlice.reducer;

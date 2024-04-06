@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
-// import { useAppSelector } from "../Redux/hook";
 import image1 from "../assets/image1.png";
+import image2 from "../assets/image2.png";
+import image3 from "../assets/image3.png";
+import image4 from "../assets/image4.png";
+import image5 from "../assets/image5.png";
+import image6 from "../assets/image6.png";
+import image7 from "../assets/image7.png";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import app from "../firebase";
+import { useAppDispatch } from "../Redux/hook";
+import { AddCart } from "../Redux/Slices/Plants";
+
+const images = [image1, image2, image3, image4, image5, image6, image7];
 
 interface CartItemProps {
   itemId: string;
-  quantity: number;
+  quantity: string;
 }
 
 type PlantType = {
@@ -18,7 +27,6 @@ type PlantType = {
 
 const CartItem = ({ itemId, quantity }: CartItemProps) => {
   //   const { cart } = useAppSelector((state) => state.plants);
-
   const [data, setData] = useState<PlantType>({
     title: "",
     price: 0,
@@ -26,8 +34,18 @@ const CartItem = ({ itemId, quantity }: CartItemProps) => {
     SKU: "",
   });
 
-  //   const [quantityState, setQuantityState] = useState(quantity);
+  const [quantityState, setQuantityState] = useState(Number(quantity));
   const db = getFirestore(app);
+  const dispatch = useAppDispatch();
+
+  const QuantityReduce = () => {
+    setQuantityState(quantityState - 1);
+  };
+
+  const QuantityIncrease = () => {
+    setQuantityState(quantityState + 1);
+    dispatch(AddCart(itemId));
+  };
 
   useEffect(() => {
     async function FetchPlant(): Promise<void> {
@@ -45,18 +63,26 @@ const CartItem = ({ itemId, quantity }: CartItemProps) => {
   });
   return (
     <li className="ShoppingCart__Products-item">
-      <img src={image1} alt="" className="ShoppingCart__Products-image" />
+      <img
+        src={images[data.image - 1]}
+        alt=""
+        className="ShoppingCart__Products-image"
+      />
       <div className="ShoppingCart__Products-inform">
         <p className="ShoppingCart__Products-inform-title">{data.title}</p>
         <span>SKU: {data.SKU}</span>
       </div>
       <p className="ShoppingCart__price">${data.price}.00</p>
       <div className="ShoppingCart__quantity">
-        <div className="ShoppingCart__sign">-</div>
-        <p className="ShoppingCart__quantity-count">{quantity}</p>
-        <div className="ShoppingCart__sign">+</div>
+        <div className="ShoppingCart__sign" onClick={QuantityReduce}>
+          -
+        </div>
+        <p className="ShoppingCart__quantity-count">{quantityState}</p>
+        <div className="ShoppingCart__sign" onClick={QuantityIncrease}>
+          +
+        </div>
       </div>
-      <p className="ShoppingCart__Total">${data.price * quantity}.00</p>
+      <p className="ShoppingCart__Total">${data.price * quantityState}.00</p>
       <svg
         className="ShoppingCart__Trash"
         width="24"

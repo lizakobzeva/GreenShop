@@ -11,7 +11,7 @@ import image5 from "../assets/image5.png";
 import image6 from "../assets/image6.png";
 import image7 from "../assets/image7.png";
 import { useAppDispatch, useAppSelector } from "../Redux/hook";
-import { AddLike, RemoveLike } from "../Redux/Slices/Plants";
+import { AddCart, AddLike, RemoveLike } from "../Redux/Slices/Plants";
 
 const images = [image1, image2, image3, image4, image5, image6, image7];
 
@@ -77,6 +77,9 @@ function FullProduct() {
     }
   }, [data.id, db, like, likeState, params.id]);
 
+  const AddInCart = () => {
+    dispatch(AddCart(params.id));
+  };
   return (
     <div className="shop">
       <section className="section container">
@@ -254,7 +257,12 @@ function FullProduct() {
                 <button className="button PlantSettings__button">
                   BUY NOW
                 </button>
-                <button className="button__accent PlantSettings__button">
+                <button
+                  className="button__accent PlantSettings__button"
+                  onClick={() => {
+                    AddInCart(), console.log(params.id);
+                  }}
+                >
                   ADD TO CART
                 </button>
                 <div

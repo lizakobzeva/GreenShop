@@ -6,10 +6,15 @@ function ShoppingCart() {
   const { cart } = useAppSelector((state) => state.plants);
 
   const CartArray = () => {
-    //const keys = Object.keys(cart);
-    const array = Object.entries(cart);
-    return array.map((obj) => {
-      return <CartItem itemId={obj[0]} quantity={obj[1]} />;
+    console.log(cart);
+
+    return cart.map((obj) => {
+      return (
+        <CartItem
+          itemId={Object.keys(obj)[0]}
+          quantity={Object.values(obj)[0]}
+        />
+      );
     });
   };
 
