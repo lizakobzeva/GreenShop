@@ -45,9 +45,9 @@ export const PlantsSlice = createSlice({
         });
     },
     AddCart: (state, action) => {
-      let i = state.cart.length;
+      let i = state.cart.length - 1;
       let exist = false;
-      while (i != 0) {
+      while (i != -1) {
         const obj = state.cart[i];
         if (obj)
           if (Object.keys(obj)[0] == action.payload) {
@@ -75,9 +75,33 @@ export const PlantsSlice = createSlice({
           like: state.like,
         });
     },
+    RemoveCart: (state, action) => {
+      let i = state.cart.length - 1;
+      const cart = state.cart;
+      while (i != -1) {
+        const obj = state.cart[i];
+        if (obj)
+          if (Object.keys(obj)[0] == action.payload) {
+            if (Object.values(obj)[0] > 1) {
+              const key = action.payload;
+              const objec: object = {};
+              objec[key] = Object.values(obj)[0] - 1;
+              cart[i] = objec;
+            }
+            state.cart = cart;
+            break;
+          }
+        i--;
+      }
+      if (userId)
+        setDoc(doc(db, "Users", userId), {
+          cart: state.cart,
+          like: state.like,
+        });
+    },
   },
 });
 
-export const { ChangePlantsData, RemoveLike, AddLike, AddCart } =
+export const { ChangePlantsData, RemoveLike, AddLike, AddCart, RemoveCart } =
   PlantsSlice.actions;
 export default PlantsSlice.reducer;

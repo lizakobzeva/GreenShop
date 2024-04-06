@@ -9,7 +9,7 @@ import image7 from "../assets/image7.png";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import app from "../firebase";
 import { useAppDispatch } from "../Redux/hook";
-import { AddCart } from "../Redux/Slices/Plants";
+import { AddCart, RemoveCart } from "../Redux/Slices/Plants";
 
 const images = [image1, image2, image3, image4, image5, image6, image7];
 
@@ -40,6 +40,7 @@ const CartItem = ({ itemId, quantity }: CartItemProps) => {
 
   const QuantityReduce = () => {
     setQuantityState(quantityState - 1);
+    dispatch(RemoveCart(itemId));
   };
 
   const QuantityIncrease = () => {
