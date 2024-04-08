@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 import app from "../../firebase";
-import { getDatabase, ref, set } from "firebase/database";
 
 const db = getFirestore(app);
-const database = getDatabase(app);
 
 //let cart: Map<string, number> = {};
 let cart: Array<object> = [{}];

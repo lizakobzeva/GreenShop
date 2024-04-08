@@ -40,9 +40,17 @@ function FullProduct() {
   });
 
   const db = getFirestore(app);
-  const { like } = useAppSelector((state) => state.plants);
+  const { like, cart } = useAppSelector((state) => state.plants);
+  let quantity = 0;
+  cart.forEach((obj) => {
+    if (Object.keys(obj)[0] == params.id) {
+      quantity = Object.values(obj)[0];
+      console.log(quantity);
+    }
+  });
+
   const [likeState, SetLikeState] = useState<boolean>(false);
-  const [quantityState, setQuantityState] = useState(0);
+  const [quantityState, setQuantityState] = useState(quantity);
   const dispatch = useAppDispatch();
 
   const ChangeLike = (like: boolean) => {
