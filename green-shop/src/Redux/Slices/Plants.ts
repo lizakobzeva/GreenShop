@@ -1,8 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import {
+  deleteField,
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import app from "../../firebase";
+import { getDatabase, ref, set } from "firebase/database";
 
 const db = getFirestore(app);
+const database = getDatabase(app);
 
 //let cart: Map<string, number> = {};
 let cart: Array<object> = [{}];
@@ -70,14 +79,19 @@ export const PlantsSlice = createSlice({
         state.cart = cart;
       }
       if (userId)
-        setDoc(doc(db, "Users", userId), {
+        // setDoc(doc(db, "Users", userId), {
+        //   cart: state.cart,
+        //   like: state.like,
+        // });
+        set(ref(database, "Users/" + userId), {
           cart: state.cart,
           like: state.like,
         });
     },
-    RemoveCart: (state, action) => {
+    DescreaseCart: (state, action) => {
       let i = state.cart.length - 1;
       const cart = state.cart;
+      console.log(cart);
       while (i != -1) {
         const obj = state.cart[i];
         if (obj)
@@ -99,9 +113,31 @@ export const PlantsSlice = createSlice({
           like: state.like,
         });
     },
+    RemoveCart: (state, action) => {
+      const cart: object[] = [];
+      state.cart.forEach((obj) => {
+        if (Object.keys(obj)[0] !== action.payload) {
+          cart.push(obj);
+        }
+      });
+
+      state.cart = cart;
+      if (userId) {
+        setDoc(doc(db, "Users", userId), {
+          cart: cart,
+          like: state.like,
+        });
+      }
+    },
   },
 });
 
-export const { ChangePlantsData, RemoveLike, AddLike, AddCart, RemoveCart } =
-  PlantsSlice.actions;
+export const {
+  ChangePlantsData,
+  RemoveLike,
+  AddLike,
+  AddCart,
+  RemoveCart,
+  DescreaseCart,
+} = PlantsSlice.actions;
 export default PlantsSlice.reducer;

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAppSelector } from "../Redux/hook";
 import CartItem from "./CartItem";
 // import { useEffect } from "react";
@@ -6,8 +7,6 @@ function ShoppingCart() {
   const { cart } = useAppSelector((state) => state.plants);
 
   const CartArray = () => {
-    console.log(cart);
-
     return cart.map((obj) => {
       return (
         <CartItem
@@ -18,6 +17,9 @@ function ShoppingCart() {
     });
   };
 
+  useEffect(() => {
+    CartArray();
+  }, [cart]);
   return (
     <section className="section container">
       <div className="ShoppingCart">

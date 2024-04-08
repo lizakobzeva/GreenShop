@@ -9,13 +9,13 @@ import image7 from "../assets/image7.png";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import app from "../firebase";
 import { useAppDispatch } from "../Redux/hook";
-import { AddCart, RemoveCart } from "../Redux/Slices/Plants";
+import { AddCart, DescreaseCart, RemoveCart } from "../Redux/Slices/Plants";
 
 const images = [image1, image2, image3, image4, image5, image6, image7];
 
 interface CartItemProps {
   itemId: string;
-  quantity: string;
+  quantity: number;
 }
 
 type PlantType = {
@@ -34,12 +34,19 @@ const CartItem = ({ itemId, quantity }: CartItemProps) => {
     SKU: "",
   });
 
-  const [quantityState, setQuantityState] = useState(Number(quantity));
+  const [quantityState, setQuantityState] = useState(quantity);
   const db = getFirestore(app);
   const dispatch = useAppDispatch();
 
   const QuantityReduce = () => {
-    setQuantityState(quantityState - 1);
+    if (quantityState > 1) {
+      setQuantityState(quantityState - 1);
+      dispatch(DescreaseCart(itemId));
+    } else {
+      dispatch(RemoveCart(itemId));
+    }
+  };
+  const CartItemRemove = () => {
     dispatch(RemoveCart(itemId));
   };
 
@@ -61,7 +68,7 @@ const CartItem = ({ itemId, quantity }: CartItemProps) => {
       setData(DataPlant);
     }
     FetchPlant();
-  });
+  }, [db, itemId, quantity]);
   return (
     <li className="ShoppingCart__Products-item">
       <img
@@ -85,6 +92,7 @@ const CartItem = ({ itemId, quantity }: CartItemProps) => {
       </div>
       <p className="ShoppingCart__Total">${data.price * quantityState}.00</p>
       <svg
+        onClick={() => CartItemRemove()}
         className="ShoppingCart__Trash"
         width="24"
         height="24"

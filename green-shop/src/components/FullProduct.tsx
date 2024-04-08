@@ -42,6 +42,7 @@ function FullProduct() {
   const db = getFirestore(app);
   const { like } = useAppSelector((state) => state.plants);
   const [likeState, SetLikeState] = useState<boolean>(false);
+  const [quantityState, setQuantityState] = useState(0);
   const dispatch = useAppDispatch();
 
   const ChangeLike = (like: boolean) => {
@@ -79,6 +80,7 @@ function FullProduct() {
 
   const AddInCart = () => {
     dispatch(AddCart(params.id));
+    setQuantityState(quantityState + 1);
   };
   return (
     <div className="shop">
@@ -252,7 +254,7 @@ function FullProduct() {
             <div className="PlantSettings__item">
               <div className="PlantSettings__buttons">
                 <div className="PlantSettings__count-minus">-</div>
-                <p className="PlantSettings__count">1</p>
+                <p className="PlantSettings__count">{quantityState}</p>
                 <div className="PlantSettings__count-plus">+</div>
                 <button className="button PlantSettings__button">
                   BUY NOW
@@ -260,7 +262,7 @@ function FullProduct() {
                 <button
                   className="button__accent PlantSettings__button"
                   onClick={() => {
-                    AddInCart(), console.log(params.id);
+                    AddInCart();
                   }}
                 >
                   ADD TO CART
