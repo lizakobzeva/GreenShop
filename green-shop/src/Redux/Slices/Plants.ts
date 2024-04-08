@@ -1,12 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  deleteField,
-  doc,
-  getDoc,
-  getFirestore,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 import app from "../../firebase";
 import { getDatabase, ref, set } from "firebase/database";
 
@@ -79,11 +72,7 @@ export const PlantsSlice = createSlice({
         state.cart = cart;
       }
       if (userId)
-        // setDoc(doc(db, "Users", userId), {
-        //   cart: state.cart,
-        //   like: state.like,
-        // });
-        set(ref(database, "Users/" + userId), {
+        setDoc(doc(db, "Users", userId), {
           cart: state.cart,
           like: state.like,
         });
